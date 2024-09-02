@@ -1,0 +1,55 @@
+module seven_segment(
+    input [3:0] number,
+    output [6:0]segment
+);
+    /*case (number)
+        4'h0: 
+           assign segment = 7'b0111111;
+        4'h1: 
+           assign segment = 7'b0000110;
+        4'h2: 
+           assign segment = 7'b1011011;
+        4'h3: 
+           assign segment = 7'b1001111;
+        4'h4: 
+           assign segment = 7'b1100110;
+        4'h5: 
+           assign segment = 7'b1101101;
+        4'h6: 
+           assign segment = 7'b1111101;
+        4'h7: 
+           assign segment = 7'b0000111;
+        4'h8: 
+           assign segment = 7'b1111111;
+        4'h9: 
+           assign segment = 7'b1101111;
+        4'hA: 
+           assign segment = 7'b1110111;
+        4'hB: 
+           assign segment = 7'b1111100;
+        4'hC: 
+           assign segment = 7'b0111001;
+        4'hD: 
+           assign segment = 7'b1011110;
+        4'hE: 
+           assign segment = 7'b1111001;
+        4'hF: 
+           assign segment = 7'b1110001;
+    endcase*/
+	 
+	 assign segment = (number == 4'h0) ? 7'b0111111 :
+                     (number == 4'h1) ? 7'b0000110 :
+                     (number == 4'h2) ? 7'b1011011 :
+                     (number == 4'h3) ? 7'b1001111 :
+                     (number == 4'h4) ? 7'b1100110 :
+                     (number == 4'h5) ? 7'b1101101 :
+                     (number == 4'h6) ? 7'b1111101 :
+                     (number == 4'h7) ? 7'b0000111 :
+                     (number == 4'h8) ? 7'b1111111 :
+                     (number == 4'h9) ? 7'b1101111 :
+                     (number == 4'hA) ? 7'b1110111 :
+                     (number == 4'hB) ? 7'b1111100 :
+                     (number == 4'hC) ? 7'b0111001 :
+                     (number == 4'hD) ? 7'b1011110 :
+                     (number == 4'hE) ? 7'b1111001 :7'b1110001;
+endmodule
