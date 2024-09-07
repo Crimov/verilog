@@ -1,5 +1,5 @@
 module seven_segment(
-    input [3:0] number,
+    input [3:0] x,
     output [6:0]segment
 );
     /*case (number)
@@ -37,7 +37,7 @@ module seven_segment(
            assign segment = 7'b1110001;
     endcase*/
 	 
-	 assign segment = (number == 4'h0) ? 7'b0111111 :
+	 /*assign segment = (number == 4'h0) ? 7'b0111111 :
                      (number == 4'h1) ? 7'b0000110 :
                      (number == 4'h2) ? 7'b1011011 :
                      (number == 4'h3) ? 7'b1001111 :
@@ -51,5 +51,13 @@ module seven_segment(
                      (number == 4'hB) ? 7'b1111100 :
                      (number == 4'hC) ? 7'b0111001 :
                      (number == 4'hD) ? 7'b1011110 :
-                     (number == 4'hE) ? 7'b1111001 :7'b1110001;
+                     (number == 4'hE) ? 7'b1111001 :7'b1110001;*/
+	assign segment[0] = (x[3]|x[1]|x[0])&((~x[3])|(~x[2])|x[1]|(~x[0]))&((~x[3])|x[2]|(~x[1])|(~x[0]));
+	assign segment[1] = (x[3]|x[2]|x[1]|x[0])&(x[3]|(~x[2])|x[1]|x[0])&((~x[2])|(~x[1])|x[0])&((~x[3])|(~x[1])|(~x[0]))&((~x[3])|(~x[2])|x[0]);
+	assign segment[2] = (x[3]|x[2]|x[0])&((~x[3])|(~x[2])|x[0])&((~x[3])|(~x[2])|(~x[1]))&((~x[3])|(~x[1])|x[0]);
+	assign segment[3] = (x[3]|x[1]|x[0])&(x[3]|x[2]|x[1])&((~x[2])|(~x[1])|(~x[0]))&((~x[3])|x[2]|(~x[1])|x[0]);
+	assign segment[4] = (x[3]|x[1])&(x[3]|(~x[0]))&(x[2]|x[1]|(~x[0]));
+	assign segment[5] = (x[3]|x[2])&(x[3]|(~x[1])|(~x[0]))&((~x[3])|(~x[2])|x[1]|(~x[0]));
+	assign segment[6] = (x[2]|x[1]|x[0])&(x[3]|x[2]|x[1])&(x[3]|(~x[2])|(~x[1])|(~x[0]));
 endmodule
+
